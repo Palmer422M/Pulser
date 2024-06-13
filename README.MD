@@ -14,3 +14,13 @@ The board is the Adafruit "Feather ESP32-S3 (4GB, 2GB PSRAM)".  It's exceptional
 - `sweep_select.py` - helps maintain sweep library
 - `sweeplib/` - folder for collection of sweep definitions (x.py) that can become sweep_def.py
 
+## Pulse Generation Language
+The basic idea is that for lists, Python interprets + as 
+concatination, N* (or *N) as repeat N times. So start with 
+single-element High and Low pulses. \
+`H = [1]` \
+`L = [0]` \
+then just string them together, e.g. could be as simple as 
+`(H + 3*L) *2` which is expanded as `[1, 0, 0, 0, 1, 0, 0, 0]`.
+
+Using these two simple Python operators, complex pulse trains (sweeps) can be built bottom-up.
